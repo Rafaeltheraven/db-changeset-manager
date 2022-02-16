@@ -126,7 +126,7 @@ class ChangeManager {
 
 	protected function lockDatabase() {
 		$i = 0;
-		while (!$this->db->query('UPDATE _metaVersion SET isLocked = 1 WHERE isLocked = 0')->rowCount()) {
+		while (!$this->db->query('UPDATE _metaVersion SET isLocked = TRUE WHERE isLocked = FALSE')->rowCount()) {
 			if ($i++ > 3) {
 				if ($this->output->prompt('Database still locked; Force database unlock and retry? [yN] ') === 'y') {
 					$this->unlockDatabase();
@@ -145,7 +145,7 @@ class ChangeManager {
 	}
 
 	protected function unlockDatabase() {
-		return (bool)$this->db->query('UPDATE _metaVersion SET isLocked = 0')->rowCount();
+		return (bool)$this->db->query('UPDATE _metaVersion SET isLocked = FALSE')->rowCount();
 	}
 
 	protected function getCurrentVersion() {
