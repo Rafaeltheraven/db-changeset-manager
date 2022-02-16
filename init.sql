@@ -2,16 +2,17 @@
 CREATE TABLE IF NOT EXISTS _metaVersion (
 	currentVersion VARCHAR(8) NOT NULL PRIMARY KEY,
 	isLocked BOOLEAN NOT NULL DEFAULT FALSE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
-INSERT INTO _metaVersion SET currentVersion = '0';
+INSERT INTO _metaVersion (currentVersion) VALUES ('0');
 
 CREATE TABLE IF NOT EXISTS _metaChange (
-	metaChangeId INTEGER UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	metaChangeId SERIAL PRIMARY KEY,
 	name VARCHAR(128) NOT NULL,
 	dateApplied TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	UNIQUE INDEX `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	UNIQUE(name)
+);
 
 INSERT INTO _metaChange (name) VALUES ('_metaVersion.isLocked');
 INSERT INTO _metaChange (name) VALUES ('_metaChange.nameLength');
+
