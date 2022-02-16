@@ -1,3 +1,8 @@
+# What is this fork?
+This is a very basic fork from the upstream zimzat version which makes this application work on postgres databases. I made it because I like this simplicity of their migrator, but I use postgres myself and they use some mysql specific syntax in some places. 
+
+To make autoincrement work I use some postgres specific syntax so it probably doesn't work anywhere else
+
 # Db Changeset Manager
 
 Automate the process of applying SQL files (changesets) to databases of different environments or users.
@@ -44,7 +49,7 @@ Requirements
 ====
 
 * PDO
-* MySQL
+* Postgresql
 
 Install
 ====
