@@ -118,9 +118,12 @@ $changeManager = new \DbVcs\ChangeManager(
 			\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
 		]
 	),
-	new \DbVcs\Processor\NoOp(),
+	new \DbVcs\Processor\Apply(),
 	new \DbVcs\Output()
 );
+$version = null;
+
+$changeManager->updateTo($version);
 ```
 
 Note: The \DbVcs\Output class should be extended to send results where and how desired (log file, browser, database, etc).
