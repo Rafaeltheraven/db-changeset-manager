@@ -1,5 +1,5 @@
 {
-	"name": "rafaeltheraven/db-changeset-manager",
+	"name": "rafaeltheraven/db-changeset-manager-psql",
 	"description": "Automate the process of applying SQL files (changesets) to databases of different environments or users.",
 	"license": "MIT",
 	"bin": [
